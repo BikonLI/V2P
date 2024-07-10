@@ -1,2 +1,2 @@
-# default
-Phone tinkering resource
+# Video To Pictures
+Extract frames from Video.
