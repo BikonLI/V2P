@@ -6,8 +6,7 @@ import webbrowser
 from time import sleep
 
 # json_path = '/storage/emulated/0/Download/PathSettings.json'
-# 如果您看到这个，证明我已经在尝试开发手机端程序！！！ 您可以联系我，给予我帮助谢谢
-# 这是我的主页，请b站联系我 https://b23.tv/tW2F1h2
+
 
 url = "https://b23.tv/tW2F1h2"
 
