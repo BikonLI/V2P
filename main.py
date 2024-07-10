@@ -35,7 +35,7 @@ class VideoToPictures:
                 self.__Rate = get_path[index]
             else:
                 self.__Format: str = get_path[index]
-        print("使用教程：古尔得的个人空间-分享自哔哩哔哩 https://b23.tv/tW2F1h2")
+        print("使用教程： https://b23.tv/tW2F1h2")
         sleep(1.2)
         print(f"视频路径获取成功：{self.__PathVideo}")
         sleep(1.2)
@@ -107,7 +107,7 @@ if __name__ == '__main__':
     except Exception as e:
         print(f"获取配置文件失败，失败原因：{e}")
         sleep(1.2)
-        print('请查看教程：使用教程：古尔得的个人空间-分享自哔哩哔哩 https://b23.tv/tW2F1h2')
+        print('请查看教程： https://b23.tv/tW2F1h2')
     else:
         standard.convert()
     finally:
