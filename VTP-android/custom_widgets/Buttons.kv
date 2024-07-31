@@ -1,0 +1,39 @@
+<FilledButton>:
+
+    size: 200, 65
+    size_hint: None, None
+    padding: 10,
+    background_color: 0, 0, 0, 0
+
+    canvas.before:
+
+        Color:
+            rgba: self.filled_color if self.state == "normal" else self.filled_color_down
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: self.size[1] / 2,
+
+
+<TextButton>:
+    background_color: 0, 0, 0, 0
+    canvas.before:
+        Color:
+            rgba: self.filled_color if self.state == "normal" else self.filled_color_down
+        RoundedRectangle: 
+            size: self.size
+            pos:  self.pos
+            radius: self.size[1] / 2,
+        
+        Color:
+            rgba: self.outline_color
+        Line:
+            rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], self.size[1] / 2, 100)
+            width: 2.2
+            
+    Label: 
+        text: root.btn_text
+        size: root.size
+        pos: root.pos
+        text: root.text
+        color: 0, 0, 0, 1

@@ -1,0 +1,17 @@
+<ProcessBar>:
+
+    canvas:
+
+        Color:
+            rgba: self.background_color
+        Line:
+            points: self.pos[0], self.pos[1] + self.size[1] / 2, self.pos[0] + self.size[0], self.pos[1] + self.size[1] / 2
+            width: self.background_width
+            cap: self.background_cap
+        
+        Color:
+            rgba: self.line_color
+        Line:
+            points: self.pos[0], self.pos[1] + self.size[1] / 2, self.pos[0] + self.proportion * self.size[0], self.pos[1] + self.size[1] / 2
+            width: self.line_width
+            cap: self.line_cap

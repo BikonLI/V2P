@@ -1,0 +1,61 @@
+<NavigationBar>:
+
+    size_hint: 1, None
+    size: 0, 100
+    pos: 0, 0
+
+    FloatLayout:
+        pos: root.pos
+        size: root.size
+        canvas.before:
+            Color:
+                rgba: root.background_color
+            Rectangle:
+                size: root.size
+                pos: root.pos
+        
+            
+
+        RippleButton:
+            id: btn0
+            text: "[color=#00000000]btn0[/color]"
+            canvas.before:
+                Color:
+                    rgba: [0.36, 0.68, 0.89, root.alpha0]
+                RoundedRectangle:
+                    size: 100, self.size[1] / 2 + 30
+                    pos: self.pos[0] + self.size[0] / 2 - 50, self.pos[1] + self.size[1] / 2 - self.size[1] / 4 - 15
+                    radius: (self.size[1] / 2 + 30) / 2,
+            markup: True
+            size_hint: 0.25, 1
+            pos_hint: {"center_x": 0.25, "center_y": 0.5}
+            background_color: (0, 0, 0, 0)
+            on_release: self.on_release_func()
+       
+        RippleButton:
+            id: btn1
+            text: "[color=#00000000]btn1[/color]"
+            canvas.before:
+                Color:
+                    rgba: [0.36, 0.68, 0.89, root.alpha1]
+                RoundedRectangle:
+                    size: 100, self.size[1] / 2 + 30
+                    pos: self.pos[0] + self.size[0] / 2 - 50, self.pos[1] + self.size[1] / 2 - self.size[1] / 4 - 15
+                    radius: (self.size[1] / 2 + 30) / 2,
+            markup: True
+            size_hint: 0.25, 1
+            pos_hint: {"center_x": 0.75, "center_y": 0.5}
+            on_release: self.on_release_func()
+
+        Image:
+            id: home
+            source: root.get_pic(root.flag)[0]
+            size_hint: 0.5, 1
+            pos_hint: {"left": 1, "center_y": 0.5}
+            
+        
+        Image:
+            id: info
+            source: root.get_pic(root.flag)[1]
+            size_hint: 0.5, 1
+            pos_hint: {"right": 1, "center_y": 0.5}

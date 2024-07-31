@@ -1,0 +1,89 @@
+FloatLayout:
+
+    size: root.size
+    pos: root.pos
+
+    canvas.before:
+        Color:
+            rgba: 0.95, 0.96, 0.96, 1
+        Rectangle:
+            size: root.size
+            pos: root.pos
+
+
+    FloatLayout:
+        size_hint: 1, None
+        size: 200, 56
+        pos_hint: {"top": 0.97, "left": 1}
+
+        FilledButton:
+            id: choose_file
+            text: "选取文件"
+            size: 200, 56
+            filled_color: (0.5, 0.5, 0.7, 1)
+            filled_color_down: (0.25, 0.25, 0.35, 1)
+            pos_hint: {"center_x": 0.2, "center_y": 0.5}
+
+
+    FloatLayout:
+        size_hint: 1, 0.2
+        pos_hint: {"center_x": 0.5, "top": 0.85}
+
+        Dropdown:
+            id: frame
+            label: "采样"
+            size_hint: 0.4, None
+            size: 270, 80
+            pos_hint: {"center_x": 0.25, "center_y": 0.75}
+            outline_color: 0.2, 0.6, 0.85, 1
+            background_color: 0.92, 0.96, 0.98, 1
+            text_list: ["1", "2", "4", "5", "10", "15", "20", "30"]
+            volumn: 8
+
+        Dropdown:
+            id: size
+            label: "尺寸"
+            size_hint: 0.4, None
+            size: 270, 80
+            pos_hint: {"center_x": 0.75, "center_y": 0.75}
+            outline_color: 0.2, 0.6, 0.85, 1
+            background_color: 0.92, 0.96, 0.98, 1
+            text_list: ["默认", "(2400, 1920)", "(1920, 1440)", "(1680, 1200)", "(1440, 960)", "(1200, 840)"]
+            volumn: 6
+
+
+        Dropdown:
+            id: spin
+            label: "旋转"
+            size_hint: 0.4, None
+            size: 270, 80
+            pos_hint: {"center_x": 0.25, "center_y": 0.25}
+            outline_color: 0.2, 0.6, 0.85, 1
+            background_color: 0.92, 0.96, 0.98, 1
+            text_list: ["0", "90", "180", "270"]
+            volumn: 4
+
+        Dropdown:
+            id: format
+            label: "格式"
+            size_hint: 0.4, None
+            size: 270, 80
+            pos_hint: {"center_x": 0.75, "center_y": 0.25}
+            outline_color: 0.2, 0.6, 0.85, 1
+            background_color: 0.92, 0.96, 0.98, 1
+            text_list: [".jpg", ".png", ".jpeg"]
+            volumn: 3
+
+    FloatLayout:
+        size_hint: 1, None
+        size: 200, 56
+        pos_hint: {"center_x": 0.5, "center_y": 0.35}
+
+        TextButton:
+            id: extract
+            text: "开始转换"
+            size_hint: None, None
+            size: 200, 56
+            pos_hint: {"center_x": 0.2, "center_y": 0.5}
+            filled_color: 0.95, 0.96, 0.96, 1
+            filled_color_down: 0.76, 0.76, 0.76, 1

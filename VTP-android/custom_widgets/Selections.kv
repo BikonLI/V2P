@@ -1,0 +1,149 @@
+<Radio>:
+
+    id: rad
+    size: 300, 65
+    size_hint: None, None
+
+    canvas.before:
+
+        Color:
+            rgba: self.background_color
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    
+    Label:
+        id: Label
+        text: "id: Label     "
+        size: root.size[0] - root.size[1], root.size[1]
+        size_hint: None, None
+        pos: root.pos[0] + wid.size[1] + 10, root.pos[1]
+        color: "green"
+
+    Widget:
+        id: wid
+        size: root.size[1], root.size[1]
+        size_hint: None, None
+        pos: root.pos
+
+        canvas:
+        
+            Color:
+                rgba: root.background_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+            Color:
+                rgba: root.radio_color
+            Ellipse:
+                size: root.radius * 2, root.radius * 2
+                pos: self.pos[0] + self.size[0] / 2 - root.radius, self.pos[1] + self.size[1] / 2 - root.radius
+
+            Color:
+                rgba: root.background_color
+            Ellipse:
+                size: root.radius * 0.8 * 2, root.radius * 0.8 * 2
+                pos: self.pos[0] + self.size[0] / 2 - root.radius * 0.8, self.pos[1] + self.size[1] / 2 - root.radius * 0.8
+
+            Color:
+                rgba: root.radio_selected_color 
+            Ellipse:
+                size: root.radius_selected * 2, root.radius_selected * 2
+                pos: self.pos[0] + self.size[0] / 2 - root.radius_selected, self.pos[1] + self.size[1] / 2 - root.radius_selected
+        
+        Button:
+            background_color: 0, 0, 0, 0
+            size: root.radius * 0.8 * 2, root.radius * 0.8 * 2
+            size_hint: None, None
+            pos: root.pos[0] + root.size[1] / 2 - root.radius * 0.8, root.pos[1] + root.size[1] / 2 - root.radius * 0.8
+            on_press: root.on_state_change()
+
+
+<Dropdown>:
+    id: dropdown
+    size: 350, 70
+    size_hint: None, None
+
+    canvas.before:
+        Color: 
+            rgba: root.background_color
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+
+        Color: 
+            rgba: root.outline_color
+        Line:
+            rounded_rectangle: self.pos[0], self.pos[1], self.size[0] + 2.2, self.size[1] + 2.2, 4, 100
+            width: 2.2
+
+        Color: 
+            rgba: root.background_color
+        Line:
+            points: self.pos[0] + 0.1 * self.size[0], self.pos[1] + self.size[1] + 2.5, root.label_pos_hint * self.size[0] + self.pos[0], self.pos[1] + self.size[1] + 2.5
+            width: 2.5
+            cap: "none"
+        
+        Color: 
+            rgba: root.array_color
+        Triangle:
+            points: root.pos[0] + root.size[0] * 0.9, root.pos[1] + root.size[1] / 2 + 3.5, root.pos[0] + root.size[0] * 0.9 + 15, root.pos[1] + root.size[1] / 2 + 3.5, root.pos[0] + root.size[0] * 0.9 + 7.5, root.pos[1] + root.size[1] / 2 - 4
+
+    Label:
+        id: label
+        text: dropdown.label
+        font_size: 20
+        color: root.outline_color
+        size_hint: None, None
+        size: 3, 3
+        pos: (root.pos[0] + 0.1 * root.size[0] + root.label_pos_hint * root.size[0] + root.pos[0]) / 2, root.pos[1] + root.size[1]
+
+    FloatLayout:
+        size: root.size
+        pos: root.pos
+        Button:
+            id: choose_box
+            size: root.size
+            pos: root.pos
+            background_color: 0, 0, 0, 0
+            on_release: root.show_list()
+        Label: 
+            size: root.size
+            pos: root.pos
+            text: root.chosen
+            color: 0, 0, 0, 1
+
+<Dropdown_list>:
+    id: drl
+    size_hint: None, None
+    size: self.size_x, self.rows * self.button_height
+    pos: self.tp_pos[0], self.tp_pos[1] - self.size[1] + 5
+    index: 10
+
+    canvas.before:
+        Color: 
+            rgba: self.background_color
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    GridLayout:
+        id: gdt
+        size_hint: None, None
+        pos: root.pos
+        size: root.size
+        cols: 1
+        spacing: 0
+
+    
+
+            
+
+
+
+
+        
+    
+        
