@@ -1,0 +1,57 @@
+#:import res utils.resources
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import dp kivy.metrics.dp
+
+<HelpPopup>:
+    size_hint: .9, .5
+    pos_hint: {"center_x": .5, "center_y": .5}
+
+    canvas.before:
+        Color: 
+            rgba: get_color_from_hex("#ecd9dd")
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Button:
+        background_normal: "normal"
+        background_color: get_color_from_hex("#00000000")
+        size_hint: 1, 1
+        pos: root.pos
+
+    MDLabel:
+        text: res.getString(25)
+        color: get_color_from_hex("000000")
+        font_style: res.getFont("MiSans")
+        role: "medium"
+        pos_hint: {"center_x": .30, "top": .9}
+        size_hint: .5, None
+
+    MDLabel:
+        text: "https://space.bilibili.com/556684797"
+        color: get_color_from_hex("000000")
+        font_style: res.getFont("MiSans")
+        role: "small"
+        pos_hint: {"center_x": .5, "center_y": .5}
+        size_hint: .9, 1
+
+    Button:
+        text: "关闭"
+        color: get_color_from_hex("000000")
+        font_name: res.getFont("MiSans")
+        background_normal: ""
+        background_color: get_color_from_hex("#3498db")
+        on_press: root.on_click_callback()
+        pos: root.pos
+        size_hint: 1, None
+        size: "0", "50dp"
+        # canvas.before:
+        #     Color:
+        #         rgba: get_color_from_hex("#3498db")
+        #     Rectangle:
+        #         size: 100, 100
+        #         pos: self.pos
+
+
+
+HelpPopup:

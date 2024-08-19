@@ -1,0 +1,265 @@
+#:import res utils.resources
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import dp kivy.metrics.dp
+
+
+<ChooseFileButton>:
+
+    text: res.getString(0)
+    color: self.textColor
+    font_name: res.getFont("MiSans")
+
+
+<ChooseBox>:
+
+    id: filechooser
+    size_hint: .8, .27
+    pos_hint: {"center_x": .5, "center_y": .78}
+
+    canvas.before:
+        Color: 
+            rgba: get_color_from_hex("#2980b9")
+        Line:
+            dash_offset: 10
+            dash_length: 25
+            width: 1
+            rounded_rectangle:
+                self.x, self.y, self.width, self.height, self.height * 0.2
+
+    canvas.after:
+        Color:
+            rgba: self.aniColor
+        RoundedRectangle:
+            size: self.width - 20, self.height - 20
+            pos: self.x + 10, self.y + 10
+            radius: self.height * 0.2,
+
+
+
+<FileIcon>:
+
+    size_hint: 1, 1
+    pos_hint: {"center_x": .5, "center_y": .5}
+
+    Image:
+        id: icon
+        size_hint: .7, .7
+        pos_hint: {"center_x": .25, "center_y": .5}
+        fit_mode: "contain"
+        source: "res/video_file_80dp_DF9D98_FILL0_wght400_GRAD0_opsz48.png"
+
+    MDLabel:
+        id: label
+        font_style: res.getFont("MiSans")
+        role: "medium"
+        color: 0, 0, 0, 1
+        size_hint: .5, .2
+        pos_hint: {"center_y": .5}
+        x: root.x + root.width / 2
+        text: res.getString(1)
+
+    MDLinearProgressIndicator:
+        size_hint_x: .45
+        value: root.value
+        pos_hint: {"center_y": .333}
+        x: root.x + root.width / 2
+        type: "determinate"
+
+
+<MenuHeader>:
+
+    spacing: "12dp"
+    padding: "4dp"
+    adaptive_height: True
+
+    MDIconButton:
+        icon: root.icon
+        pos_hint: {"center_y": .5}
+
+    MDLabel:
+        text: root.text
+        font_style: res.getFont("MiSans")
+        role: "medium"
+        halign: "center"
+        adaptive_size: True
+        pos_hint: {"center_x": .5, "center_y": .5}
+
+
+<ConfigDropDown>:
+
+    text: ""
+    on_release: self.openMenu()
+    halign: "justify"
+
+    canvas.before:
+        Color:
+            rgba: get_color_from_hex("#a9cce3")
+        Line:
+            points: self.x - 20 + self.offset_x, self.y + 20, self.x + self.width - 20 + self.offset_x, self.y + 20
+            width: 1.3
+
+        Color: 
+            rgba: get_color_from_hex("#5599c7")
+        Triangle:
+            points: self.x + self.width - 40 + self.offset_x, self.y + self.height / 2 + 10, self.x + self.width - 25 + self.offset_x, self.y + self.height / 2 + 10, self.x + self.width - 32.5 + self.offset_x, self.y + self.height / 2
+
+
+<ExtractProgressIndicator>:
+
+    size_hint: .9, None
+    size: '0dp', '2dp'
+    pos_hint: {"center_x": .5, "center_y": .16}
+
+    canvas.after:
+        Color:
+            rgba: self.coverColor
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+
+<Extract>:
+
+    text: res.getString(23)
+    font_name: res.getFont("MiSans")
+    ripple_duration_in: 1.5
+    ripple_duration_out: 1
+    ripple_fade_from_alpha: .3
+    ripple_fade_to_alpha: .9
+    halign: "center"
+    valign: "middle"
+    color: self.textColor
+    ifShow: self.enDisable(self.ifShow)
+
+    size_hint: None, None
+    size: '120dp', '40dp'
+    pos_hint: {"center_x": .25, "center_y": .40}
+
+    canvas.before:
+        Color:
+            rgba: self.buttonColor
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: self.height / 2,
+
+
+<ExtractArea>:
+
+    Button:
+        size_hint: .25, .15
+        pos_hint: {"right": .40, "top": .95}
+        background_color: get_color_from_hex("#00000000")
+        background_normal: ''
+        on_press: root.popup()
+        
+    MDLabel:
+        text: res.getString(24)
+        font_style: res.getFont("MiSans")
+        role: "small"
+        size_hint: .25, .15
+        pos_hint: {"right": .28, "top": .93}
+        halign: "right"
+        valign: "middle"
+
+    Image:
+        source: "res/help_16dp_5F6368_FILL1_wght400_GRAD0_opsz20.png"
+        size_hint: .07, .15
+        pos_hint: {"right": .2, "top": .95}
+
+
+<ExtractPage>:
+    id: extractpage
+
+    size_hint: 1, 1
+
+    canvas.before:
+        Color: 
+            rgba: get_color_from_hex("#FFFFFFFF")
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    ChooseBox:
+        id: choosebox
+   
+
+    GridLayout:
+
+        rows: 2
+        size_hint: .85, .30
+        pos_hint: {"center_x": .5, "center_y": .45}
+
+        FloatLayout:
+            ConfigDropDown: 
+                id: frame
+                text: res.getString(6)
+                menuHeaderText: res.getString(2)
+                menuHeaderIcon: "image-frame"
+                halign: "center"
+                offset_x: 20
+                hor_growth: "right"
+                ver_growth: "down"
+                #menuWidth: 200
+                size_hint: .88, .5
+                pos_hint: {"center_x": .6, "center_y": .5}
+                itemsList: res.getString(6), res.getString(7), res.getString(8), res.getString(9), res.getString(10), res.getString(11) 
+
+        FloatLayout:
+            ConfigDropDown:
+                id: size
+                text: res.getString(12)
+                menuHeaderText: res.getString(3)
+                menuHeaderIcon: "image-size-select-large"
+                halign: "auto"
+                hor_growth: "left"  
+                ver_growth: "down"
+                #menuWidth: 320
+                size_hint: .88, .5
+                pos_hint: {"center_x": .65, "center_y": .5}
+                itemsList: res.getString(12), res.getString(13), res.getString(14), res.getString(15)
+
+        FloatLayout
+            ConfigDropDown:
+                id: spin
+                text: res.getString(16)
+                menuHeaderText: res.getString(4)
+                menuHeaderIcon: "refresh"
+                halign: "center"
+                offset_x: 20
+                hor_growth: "right"
+                ver_growth: "up"
+                position: "top"
+                #menuWidth: 200
+                size_hint: .88, .5
+                pos_hint: {"center_x": .6, "center_y": .5}
+                itemsList: res.getString(16), res.getString(17), res.getString(18), res.getString(19)
+
+        FloatLayout:
+            ConfigDropDown:
+                id: fromat
+                text: res.getString(20)
+                menuHeaderText: res.getString(5)
+                menuHeaderIcon: "content-save-cog"
+                halign: "center"
+                hor_growth: "left" 
+                ver_growth: "up"
+                position: "top"
+                #menuWidth: 350
+                size_hint: .88, .5
+                pos_hint: {"center_x": .65, "center_y": .5}
+                itemsList: res.getString(20), res.getString(21), res.getString(22)
+    
+    BoxLayout:
+        # id: extract_area
+        size_hint: .95, .26
+        pos_hint: {"center_x": .5, "center_y": .22}
+
+        ExtractArea:
+            id: extract_area
+
+ExtractPage:
+
+ 
+
+        
